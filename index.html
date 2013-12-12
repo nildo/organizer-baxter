@@ -19,7 +19,7 @@
           <a id="forkme_banner" href="https://github.com/nildo/organizer-baxter">View on GitHub</a>
 
           <h1 id="project_title">Organizer Baxter</h1>
-          <h2 id="project_tagline">Final project for the class EE125 - Introduction to Robotics - Fall 2013</h2>
+          <h2 id="project_tagline">Final project for the class EE125 - Introduction to Robotics - Fall 2013 <br/> UC Berkeley</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/nildo/organizer-baxter/zipball/master">Download this project as a .zip file</a>
@@ -31,6 +31,15 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+		<br/>
+		<p>	<a href="#introduction">Introduction</a> |
+			<a href="#design">Design</a> |
+			<a href="#implementation">Implementation</a> |
+			<a href="#results">Results</a> |
+			<a href="#conclusion">Conclusion</a> |
+			<a href="#references">References</a>
+		</p>
+		<br/>
         <p>We are exchange students at UC Berkeley and here we present the Organizer Baxter, our final project for the EE125 (Introduction to Robotics) course in the Fall semester of 2013. In this project, we used Baxter, a robot built by <a href="http://www.rethinkrobotics.com/products/baxter/">Rethink Robotics</a>.</p>
 
 <p><img src="https://dl.dropboxusercontent.com/u/25167563/ee125/baxter-robot.jpg" alt="Baxter"></p>
@@ -45,11 +54,11 @@
 <p>To make this work, we used Baxter’s right hand camera to monitor the table and get the objects position. The first problem we had to solve was calibrating the camera to be able to get the position in the table plane given a point in the image from the camera. Once we had that part working, the second problem we had to solve was to identify the position of the object in the image, and then also identifying the position of the object in the table using the solution for the first problem. The third problem was to move Baxter’s left arm endpoint to a specific point in space, that we can get using the solution from the second problem. Finally, we had to plan the sequence of points that the arm’s endpoint should move to in order to pick up an object in one place in the table and leave it in another.</p>
 
 <p>Sometime in the future, robots will be so sophisticated that we all will have a robot to clean and organize our houses. Have you ever watched the cartoon called “The Jetsons”? They are a family from the future, and they own a household robot called Rosie. <a href="http://www.wired.co.uk/news/archive/2012-09/24/jetsons-50th-anniversary">This cartoon aired in 1964, and it predicted many of the present technology, like flat screen TVs, video phone calls, portable media devices and interactive media.</a> Thus, we can believe that a robot like Rosie will someday be a reality in our lives.</p>
-
+<center>
 <p><img src="https://dl.dropboxusercontent.com/u/25167563/ee125/rosie.png" alt="Rosie, from the cartoon The Jetsons"></p>
 
 <p><em>Rosie, the household robot from The Jetsons, a cartoon by Hanna-Barbera Productions</em></p>
-
+</center>
 <p>For now, the principles used in the Organizer Baxter can be applied in industry. An example would be automating the arrangement of some products in a pack, in a way that every pack will have the products organized in the same way. Another example can be a robot that would organize the tools used by a human worker, so he doesn’t have to worry about that while doing his tasks.</p>
 
 <h2>
@@ -98,24 +107,22 @@
 
 <p>Finally, we combined the separate results from resolving the different problems into a program that makes Baxter keep tracking of a pink object on a table. At the beginning we set up the robot and perform the calibration. Then, the program asks to put the object in its original position. After clicking enter, it will check every 10 seconds if the object has been moved from the original position. If it detects the object in a area, it will use the arm to grab the object in this new position and return it to the original position. So, the overall of the system is represented in the following flowchart:</p>
 
+<center>
 <p><img src="https://dl.dropboxusercontent.com/u/25167563/ee125/flowchart.svg" alt="Flowchart of the overall program."></p>
 
 <p><em>Flowchart for the overall behavior of our system.</em></p>
+</center>
 
 <h2>
 <a name="results" class="anchor" href="#results"><span class="octicon octicon-link"></span></a>Results</h2>
 
 <p>We tested our program on Baxter. The following video shows the calibration process, that we have to do before the execution of the organizing task.</p>
 
-<p><a href="http://www.youtube.com/watch?v=sNN6mCO27-E"><img src="http://i1.ytimg.com/vi/sNN6mCO27-E/mqdefault.jpg" alt="Calibration"></a></p>
-
-<p><em>Click in the thumbnail to watch the video.</em></p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/sNN6mCO27-E?rel=0" frameborder="0" allowfullscreen></iframe>
 
 <p>The next video shows Baxter grabbing the object and then placing it back on its original position.</p>
 
-<p><a href="http://www.youtube.com/watch?v=gRwJzJ8GW3w"><img src="http://i1.ytimg.com/vi/gRwJzJ8GW3w/mqdefault.jpg" alt="Movement"></a></p>
-
-<p><em>Click in the thumbnail to watch the video.</em></p>
+<iframe width="640" height="360" src="//www.youtube.com/embed/gRwJzJ8GW3w?rel=0" frameborder="0" allowfullscreen></iframe>
 
 <h2>
 <a name="conclusion" class="anchor" href="#conclusion"><span class="octicon octicon-link"></span></a>Conclusion</h2>
