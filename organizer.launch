@@ -1,0 +1,11 @@
+<launch>
+      <node name="right_hand_camera_srv" pkg="organizer" type="right_hand_camera_srv.py"  respawn="false" output="screen" />
+
+<node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+            <remap from="image" to="/cameras/right_hand_camera/image" />
+            <param name="autosize" value="true" />
+      </node>
+
+      <node name="organizer" pkg="organizer" type="organizer.py"  respawn="false" output="screen" />
+ 
+</launch>

@@ -1,0 +1,18 @@
+<package>
+  <description brief="organizer">
+
+     organizer
+
+  </description>
+  <author>EE125</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/organizer</url>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="sensor_msgs"/>
+  <depend package="baxter_msgs"/>
+  <depend package="baxter_interface"/>
+</package>
+
+
