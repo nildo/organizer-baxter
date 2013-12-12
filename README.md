@@ -1,4 +1,4 @@
-Organizer Baxter {#welcome}
+Organizer Baxter
 ===
 
 We are exchange students at UC Berkeley and here we present the Organizer Baxter, our final project for the EE125 (Introduction to Robotics) course in the Fall semester of 2013. In this project, we used Baxter, a robot built by [Rethink Robotics][1].
