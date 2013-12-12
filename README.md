@@ -3,9 +3,9 @@ Organizer Baxter
 
 We are exchange students at UC Berkeley and here we present the Organizer Baxter, our final project for the EE125 (Introduction to Robotics) course in the Fall semester of 2013. In this project, we used Baxter, a robot built by [Rethink Robotics][1].
 
-> ![Baxter](https://dl.dropboxusercontent.com/u/25167563/ee125/baxter-robot.jpg)
+![Baxter](https://dl.dropboxusercontent.com/u/25167563/ee125/baxter-robot.jpg)
 
-> *This is Baxter, the awesome robot we used for the project.*
+*This is Baxter, the awesome robot we used for the project.*
 
 Introduction
 ---
@@ -16,9 +16,9 @@ To make this work, we used Baxter’s right hand camera to monitor the table and
 
 Sometime in the future, robots will be so sophisticated that we all will have a robot to clean and organize our houses. Have you ever watched the cartoon called “The Jetsons”? They are a family from the future, and they own a household robot called Rosie. [This cartoon aired in 1964, and it predicted many of the present technology, like flat screen TVs, video phone calls, portable media devices and interactive media.][2] Thus, we can believe that a robot like Rosie will someday be a reality in our lives.
 
-> ![Rosie, from the cartoon The Jetsons](https://dl.dropboxusercontent.com/u/25167563/ee125/rosie.png)
+![Rosie, from the cartoon The Jetsons](https://dl.dropboxusercontent.com/u/25167563/ee125/rosie.png)
 
->*Rosie, the household robot from The Jetsons, a cartoon by Hanna-Barbera Productions*
+*Rosie, the household robot from The Jetsons, a cartoon by Hanna-Barbera Productions*
 
 For now, the principles used in the Organizer Baxter can be applied in industry. An example would be automating the arrangement of some products in a pack, in a way that every pack will have the products organized in the same way. Another example can be a robot that would organize the tools used by a human worker, so he doesn’t have to worry about that while doing his tasks.
 
@@ -64,24 +64,24 @@ We implemented the functions that make Baxter pick the object or put it on the t
 
 Finally, we combined the separate results from resolving the different problems into a program that makes Baxter keep tracking of a pink object on a table. At the beginning we set up the robot and perform the calibration. Then, the program asks to put the object in its original position. After clicking enter, it will check every 10 seconds if the object has been moved from the original position. If it detects the object in a area, it will use the arm to grab the object in this new position and return it to the original position. So, the overall of the system is represented in the following flowchart:
 
-> ![Flowchart of the overall program.][6]
+![Flowchart of the overall program.][6]
 
-> *Flowchart for the overall behavior of our system.*
+*Flowchart for the overall behavior of our system.*
 
 Results
 ---
 
 We tested our program on Baxter. The following video shows the calibration process, that we have to do before the execution of the organizing task.
 
->[![Calibration](http://i1.ytimg.com/vi/sNN6mCO27-E/mqdefault.jpg)](http://www.youtube.com/watch?v=sNN6mCO27-E)
+[![Calibration](http://i1.ytimg.com/vi/sNN6mCO27-E/mqdefault.jpg)](http://www.youtube.com/watch?v=sNN6mCO27-E)
 
-> Click in the thumbnail to watch the video.
+*Click in the thumbnail to watch the video.*
 
 The next video shows Baxter grabbing the object and then placing it back on its original position.
 
-> [![Movement](http://i1.ytimg.com/vi/gRwJzJ8GW3w/mqdefault.jpg)](http://www.youtube.com/watch?v=gRwJzJ8GW3w)
+[![Movement](http://i1.ytimg.com/vi/gRwJzJ8GW3w/mqdefault.jpg)](http://www.youtube.com/watch?v=gRwJzJ8GW3w)
 
-> Click in the thumbnail to watch the video.
+*Click in the thumbnail to watch the video.*
 
 Conclusion
 ---
@@ -99,9 +99,9 @@ Team
 
 We are exchange students at the University of California at Berkeley through the Brazilian [Science Without Borders](http://www.cienciasemfronteiras.gov.br/web/csf-eng/) Program.
 
-> ![The team, viewed by Baxter!][7]
+![The team, viewed by Baxter!][7]
 
-> *From left to right in the picture: Baxter, Carlos, Felipe and Nildo.*
+*Selfie with Baxter. From left to right in the picture: Baxter, Carlos, Felipe and Nildo.*
 
 #### Carlos Pedro Vianna Lordelo
 > Major in Electronic and Computer Engineering at [Federal University of Rio de Janeiro](http://www.ufrj.br). Used to work with digital signal processing, he came to Berkeley with the object of open his mind to differents areas of electronic engineering, choosing robotics as his first one.
