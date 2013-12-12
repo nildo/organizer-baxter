@@ -31,37 +31,105 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="organizer-baxter" class="anchor" href="#organizer-baxter"><span class="octicon octicon-link"></span></a>Organizer Baxter</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>We are exchange students at UC Berkeley and here we present the Organizer Baxter, our final project for the EE125 (Introduction to Robotics) course in the Fall semester of 2013. In this project, we used Baxter, an industrial robot built by <a href="http://www.rethinkrobotics.com/products/baxter/">Rethink Robotics</a>.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<hr><h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>The goal of our project is to use Baxter to keep some objects placed in a table organized. To achieve this, Baxter memorizes the original position of the objects in the table. When it detects that an object has been moved from its original position, it actuates to grasp this object and put it back in the position where it was before.</p>
+
+<p>To make this work, we used Baxter’s right hand camera to monitor the table and get the objects position. The first problem we had to solve was calibrating the camera to be able to get the position in the table plane given a point in the image from the camera. Once we had that part working, the second problem we had to solve was to identify the position of the object in the image, and then also identifying the position of the object in the table using the solution for the first problem. The third problem was to move Baxter’s left arm endpoint to a specific point in space, that we can get using the solution from the second problem. Finally, we had to plan the sequence of points that the arm’s endpoint should move to in order to pick up an object in one place in the table and leave it in another.</p>
+
+<p>Sometime in the future, robots will be so sophisticated that we all will have a robot to clean and organize our houses. Have you ever watched the cartoon called “The Jetsons”? They are a family from the future, and they own a household robot called Rosie. <a href="http://www.wired.co.uk/news/archive/2012-09/24/jetsons-50th-anniversary">This cartoon aired in 1964, and it predicted many of the present technology, like flat screen TVs, video phone calls, portable media devices and interactive media.</a> Thus, we can believe that a robot like Rosie will someday be a reality in our lives.</p>
+
+<p>For now, the principles used in the Organizer Baxter can be applied in industry. An example would be automating the arrangement of some products in a pack, in a way that every pack will have the products organized in the same way. Another example can be a robot that would organize the tools used by a human worker, so he doesn’t have to worry about that while doing his tasks.</p>
+
+<hr><h2>
+<a name="design" class="anchor" href="#design"><span class="octicon octicon-link"></span></a>Design</h2>
+
+<hr><h2>
+<a name="implementation" class="anchor" href="#implementation"><span class="octicon octicon-link"></span></a>Implementation</h2>
+
+<p>The hardware we used to do the project was Baxter. It is a robot with two 7-degrees-of-freedom arms. On each end-effector it has a camera and a gripper. It also has a camera on the head and various sensors.</p>
+
+<p>To program Baxter, we used ROS, the <a href="http://www.ros.org/">Robot Operating System</a>. ROS is a framework for writing robot software. It is a collection of tools, libraries, and conventions to simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms. Using ROS, we program nodes, that are processes that perform computation and communicate with one another using topics and services. The programming language used to program the nodes was <a href="http://www.python.org/">Python</a>.</p>
+
+<p>Baxter also has a Software Development Kit (SDK) provided to us by the Instructors of the discipline. In this SDK there was an interface implemented to manipulate the various inputs and outputs of the robot. In our implementation, we used this SDK to enable and disable the robot, the camera and to set the joint positions of the arms. It also provided an Inverse Kinematics service to calculate the joint angles for the Baxter arms.</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="camera-calibration" class="anchor" href="#camera-calibration"><span class="octicon octicon-link"></span></a>Camera Calibration</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>The first thing we had to be able to do is to retrieve an image from Baxter’s right hand camera. In order to do that, we created a ROS service called <code>right_hand_camera_srv</code>, that subscribes to the topic called <code>/cameras/right_hand_camera/image</code>, where the images coming from that camera are published. Upon calling this service, it stores and returns the last image published.</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>To solve the first problem we had in the project, where we want to calculate the coordinates on the table plane from the coordinates of a pixel in the image from the camera, we had to perform a calibration task before running the project. In this calibration, we sample four spatial coordinates moving the Baxter’s left arm to four different positions on the table. We use the Baxter SDK function to get the position of the end-effector of the left arm and store its spatial and rotational coordinates. These positions are marked so we can visualize them in the image from the camera and select the corresponding pixels by clicking on those points on the image.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>With those points, we calculate a matrix <code>H</code> that represents a linear transform between points in the floor and points in the image, called a homography. With this matrix, we can tell which pixel on the image correspond to a certain point in the table plane. Calculate the opposite, that is, given a pixel calculate the table coordinates, can be done with the inverse of matrix <code>H</code>. With this inverse matrix, the first problem is solved. In our implementation, we store this matrix in a global variable.</p>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="object-recognition" class="anchor" href="#object-recognition"><span class="octicon octicon-link"></span></a>Object Recognition</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>For now, we only implemented a function to recognize an object by its color. The algorithm uses some functions from the <a href="http://opencv.org/">OpenCV</a> library to processes the image received, filters color from a certain range in the HSV color space that corresponds to the color pink, transforming it in a black and white image, being white where originally it was pink. Then it searches for the largest contour on that image and we assume that this contour will represent the object. We find a point in the center and bottom of that contour, that will represent the closest point of the object in the floor plane. Then we apply to this point the inverse homography previously calculated in the calibration phase and we have the point in the table plane where the object is. These functions are all implemented in the main file of the project, called <code>organizer.py</code>.</p>
+
+<h3>
+<a name="movement" class="anchor" href="#movement"><span class="octicon octicon-link"></span></a>Movement</h3>
+
+<p>The third problem was to move Baxter’s arm to a specific point that will lie on the table plane. In order to to that, we have to find a set of joint angles that will make the end-effector of the left arm be in that position. This is the Inverse Kinematics problem. To solve it, we used a service provided by the Baxter SDK, where we pass the spatial and rotational coordinates that we want the end-effector to be and it returns one possible set of joint angles that solve this problem. To set the joint angles values in the arm, there is a function in the Baxter SDK that manages to do that. Then we were able to move the arm to any point in the space that Baxter can reach with his left arm.</p>
+
+<p>We implemented the functions that make Baxter pick the object or put it on the table in a way that it will first move the arm to a position right above the destination, that is, it will move to a point that have the same <code>x</code> and <code>y</code> coordinates, but the <code>z</code> coordinate is a little bigger. After the arm finishes going to that position, we command it to move again to the real destination, and then close or open the gripper, depending of the case.</p>
+
+<h3>
+<a name="putting-all-together" class="anchor" href="#putting-all-together"><span class="octicon octicon-link"></span></a>Putting All Together</h3>
+
+<p>Finally, we combine the separate results from resolving the different problems into a program that makes Baxter keep one object in a table in the same place. At the beginning we set up the robot and perform the calibration. Then, the program asks to put the object in the original position. After clicking enter, it will check every 10 seconds if the object has been moved from the original position. If it detects the object in a different position, it will use the arm to grab the object in this new position and return it to the original position. So, the overall of the system is represented in the following flowchart:</p>
+
+<p><img src="http://wc1.smartdraw.com/specials/images/examples/flowchart-example-medical-services-patient-routing-flowchart.png" alt="Flowchart of the overall program."></p>
+
+<hr><h2>
+<a name="results" class="anchor" href="#results"><span class="octicon octicon-link"></span></a>Results</h2>
+
+<p>We tested our program on Baxter. The following video shows the calibration process, that we have to do before the execution of the organizing task.</p>
+
+<p><a href="http://www.youtube.com/watch?v=sNN6mCO27-E"><img src="http://img.youtube.com/vi/sNN6mCO27-E/0.jpg" alt="Calibration"></a></p>
+
+<p>The next video shows Baxter grabbing the object and then placing it back on its original position.</p>
+
+<p><a href="http://www.youtube.com/watch?v=gRwJzJ8GW3w"><img src="http://img.youtube.com/vi/gRwJzJ8GW3w/0.jpg" alt="Movement"></a></p>
+
+<hr><h2>
+<a name="team" class="anchor" href="#team"><span class="octicon octicon-link"></span></a>Team</h2>
+
+<p>We are exchange students at the University of California at Berkeley through the Brazilian Science Without Borders Program.</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/25167563/carlos_felipe_nildo_robotics_team.jpg" alt="The team, viewed by Baxter!"></p>
+
+<p>From left to right in the picture:</p>
+
+<h4>
+<a name="carlos-pedro-vianna-lordelo" class="anchor" href="#carlos-pedro-vianna-lordelo"><span class="octicon octicon-link"></span></a>Carlos Pedro Vianna Lordelo</h4>
+
+<h4>
+<a name="felipe-campos-lins" class="anchor" href="#felipe-campos-lins"><span class="octicon octicon-link"></span></a>Felipe Campos Lins</h4>
+
+<p>Major in Electrical Engineering, from the <a href="http://www.ufcg.edu.br/">Federal University of Campina Grande</a>. Enthusiast of electronic circuits and new technologies, hoping to discover how everything works.         </p>
+
+<h4>
+<a name="nildo-dos-santos-ribeiro-junior" class="anchor" href="#nildo-dos-santos-ribeiro-junior"><span class="octicon octicon-link"></span></a>Nildo dos Santos Ribeiro Junior</h4>
+
+<p>Major in Computer Science, he is from the <a href="http://www.ufmg.br">Federal University of Minas Gerais</a>. He is a dreamer who believes that one day nobody will have to organize their stuff again, and robots will do all the boring tasks we don’t want to do.</p>
+
+<hr><h2>
+<a name="references" class="anchor" href="#references"><span class="octicon octicon-link"></span></a>References</h2>
+
+<ul>
+<li><a href="http://www.rethinkrobotics.com/products/baxter/">http://www.rethinkrobotics.com/products/baxter/</a></li>
+<li><a href="http://www.wired.co.uk/news/archive/2012-09/24/jetsons-50th-anniversary">http://www.wired.co.uk/news/archive/2012-09/24/jetsons-50th-anniversary</a></li>
+<li><a href="http://www.ros.org/">http://www.ros.org/</a></li>
+<li><a href="http://www.python.org/">http://www.python.org/</a></li>
+<li><a href="http://opencv.org/">http://opencv.org/</a></li>
+</ul><hr>
       </section>
     </div>
 
