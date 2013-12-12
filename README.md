@@ -113,7 +113,6 @@ We are exchange students at the University of California at Berkeley through the
 #### Nildo dos Santos Ribeiro Junior
 > Major in Computer Science, he is from the [Federal University of Minas Gerais](http://www.ufmg.br). He has some experience in research on Wireless Sensor Networks and really likes the field of Robotics. Has a good sense of humor and sometimes interesting and crazy ideas.
 
----
 
 References
 ---
@@ -123,8 +122,6 @@ References
 - http://www.ros.org/
 - http://www.python.org/
 - http://opencv.org/
-
----
 
 
   [1]: http://www.rethinkrobotics.com/products/baxter/
