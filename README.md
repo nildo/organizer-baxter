@@ -3,7 +3,7 @@ Organizer Baxter
 
 We are exchange students at UC Berkeley and here we present the Organizer Baxter, our final project for the EE125 (Introduction to Robotics) course in the Fall semester of 2013. In this project, we used Baxter, a robot built by [Rethink Robotics][1].
 
-![Baxter](https://dl.dropboxusercontent.com/u/25167563/ee125/baxter-robot.jpg)
+![Baxter](https://www.dropbox.com/s/dh1oo7q5lmf1pb4/baxter-robot.jpg)
 
 *This is Baxter, the awesome robot we used for the project.*
 
@@ -16,7 +16,7 @@ To make this work, we used Baxter’s right hand camera to monitor the table and
 
 Sometime in the future, robots will be so sophisticated that we all will have a robot to clean and organize our houses. Have you ever watched the cartoon called “The Jetsons”? They are a family from the future, and they own a household robot called Rosie. [This cartoon aired in 1964, and it predicted many of the present technology, like flat screen TVs, video phone calls, portable media devices and interactive media.][2] Thus, we can believe that a robot like Rosie will someday be a reality in our lives.
 
-![Rosie, from the cartoon The Jetsons](https://dl.dropboxusercontent.com/u/25167563/ee125/rosie.png)
+![Rosie, from the cartoon The Jetsons](https://www.dropbox.com/s/r6u1kkp5xu9t3up/rosie.png?dl=0)
 
 *Rosie, the household robot from The Jetsons, a cartoon by Hanna-Barbera Productions*
 
@@ -129,5 +129,5 @@ References
   [3]: http://www.ros.org/
   [4]: http://www.python.org/
   [5]: http://opencv.org/
-  [6]: https://dl.dropboxusercontent.com/u/25167563/ee125/flowchart.svg
-  [7]: https://dl.dropboxusercontent.com/u/25167563/ee125/carlos_felipe_nildo.jpg
+  [6]: https://www.dropbox.com/s/a2l6v04qj2n4qp1/flowchart.svg
+  [7]: https://www.dropbox.com/s/a17i7pcqk5z2fx6/carlos_felipe_nildo.jpg
